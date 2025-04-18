@@ -1,1 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioxBinary - The Signal for Smarter Care</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2E7D32;
+            --secondary: #42A5F5;
+            --accent: #FF7043;
+            --dark: #263238;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Product Section */
+        .product-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* How It Works Section */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 auto 20px;
+        }
+        
+        /* Impact Section */
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+        }
+        
+        /* Blog Section */
+        .blog-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .blog-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-about {
+            max-width: 300px;
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+        }
+        
+        .newsletter button {
+            padding: 10px 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-grid,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-features,
+            .impact-stats,
+            .blog-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-features,
+            .impact-stats,
+            .blog-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Biox<span>Binary</span></a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#product">DoseXTrack</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>DoseXTrack: The Signal for Smarter Care</h1>
+                <p>Empowering children with disabilities through affordable, smart assistive technology</p>
+                <a href="#product" class="btn">Learn More</a>
+                <a href="#contact" class="btn btn-outline">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="text-center">About BioxBinary</h2>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Our Mission</h3>
+                    <p>BioxBinary is on a mission to create affordable, intelligent assistive devices that enhance the quality of life for children with disabilities, especially in underserved communities.</p>
+                    <h3>Our Vision</h3>
+                    <p>We envision a world where technology bridges the gap in care, where every child with special needs has access to tools that promote independence, safety, and well-being.</p>
+                    <h3>Our Story</h3>
+                    <p>Founded by a team of engineers, healthcare professionals, and parents of children with special needs, BioxBinary was born from firsthand experience with the challenges of medication management and care coordination. We saw a need for smarter solutions that could alleviate the burden on caregivers while empowering children.</p>
+                </div>
+                <div class="about-img">
+                    <img src="/api/placeholder/600/400" alt="BioxBinary Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="text-center">Introducing DoseXTrack</h2>
+            <p class="text-center">Our flagship product designed to ensure timely, safe, and monitored medication intake for children with special needs.</p>
+            
+            <div class="text-center" style="margin: 50px 0;">
+                <img src="/api/placeholder/800/450" alt="DoseXTrack Device" style="max-width: 100%; border-radius: 10px; box-shadow: var(--shadow);">
+            </div>
+            
+            <div class="product-features">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Automated Dispensing</h3>
+                    <p>Precisely timed medication delivery ensures children receive the right dose at the right time, every time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Customizable reminders and notifications for caregivers and children, with sensory-friendly light and sound options.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Remote Monitoring</h3>
+                    <p>Real-time tracking via mobile app allows caregivers to monitor medication intake from anywhere.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Access</h3>
+                    <p>Child-safe locking mechanism prevents access to multiple doses, while ensuring easy access when needed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Health Insights</h3>
+                    <p>Tracks patterns and generates reports to help optimize medication schedules and improve outcomes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔋</div>
+                    <h3>Long Battery Life</h3>
+                    <p>Reliable performance with battery backup to ensure continuous operation even during power outages.</p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="#contact" class="btn">Request a Pilot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section">
+        <div class="container">
+            <h2 class="text-center">How It Works</h2>
+            <p class="text-center">DoseXTrack makes medication management simple and worry-free in just a few easy steps.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Set Up</h3>
+                    <p>Load medications into individually sealed compartments and program dosage schedule via the app.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Alert</h3>
+                    <p>DoseXTrack signals when it's time for medication with customizable sensory-friendly alerts.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Dispense</h3>
+                    <p>The device automatically dispenses the correct medication in the proper dose.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Track</h3>
+                    <p>Caregivers receive confirmation and can monitor adherence through the mobile dashboard.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <h3>Use Cases</h3>
+                <div class="product-features" style="margin-top: 30px;">
+                    <div class="feature-card">
+                        <h4>At Home</h4>
+                        <p>Helps parents manage complex medication schedules while promoting children's independence and reducing family stress.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>At School</h4>
+                        <p>Assists school nurses and staff in administering medications accurately to multiple students throughout the day.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>In Care Facilities</h4>
+                        <p>Supports healthcare providers in maintaining precise medication schedules for children with chronic conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="text-center">Our Impact</h2>
+            <p class="text-center">We're addressing critical challenges in medication management for children with disabilities.</p>
+            
+            <div class="impact-stats">
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <p>of children with chronic conditions miss doses or take incorrect amounts of medication.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">67%</div>
+                    <p>of caregivers report high stress levels related to managing complex medication schedules.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">86%</div>
+                    <p>of medication errors in children are preventable with proper systems and technology.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <h3 class="text-center">Our Commitment</h3>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <p>At BioxBinary, we believe that assistive technology should be accessible to all. We're committed to:</p>
+                    <ul style="margin-bottom: 20px; margin-left: 20px;">
+                        <li>Creating affordable solutions that work for families across all income levels</li>
+                        <li>Designing with inclusivity in mind to accommodate diverse abilities and needs</li>
+                        <li>Partnering with community organizations to reach underserved populations</li>
+                        <li>Continuously improving our products based on feedback from the special needs community</li>
+                    </ul>
+                    <p>Through DoseXTrack and future innovations, we aim to empower children with disabilities to live more independent, healthy, and fulfilling lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="text-center">Get Involved</h2>
+            <p class="text-center">Join us in our mission to transform care for children with disabilities.</p>
+            
+            <div class="contact-grid">
+                <div>
+                    <h3>Early Adopter Program</h3>
+                    <p>Be among the first to experience DoseXTrack and help shape its development with your feedback.</p>
+                    
+                    <h3>Partner With Us</h3>
+                    <p>We're seeking partnerships with schools, healthcare facilities, nonprofits, and advocacy organizations that share our vision.</p>
+                    
+                    <h3>Investment Opportunities</h3>
+                    <p>Support our growth as we expand our reach and develop new assistive technologies.</p>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Contact Us</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>I am interested in...</option>
+                                <option value="early-adopter">Early Adopter Program</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="investment">Investment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section (Optional) -->
+    <section class="section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="text-center">Latest Updates</h2>
+            <p class="text-center">Follow our journey as we develop and launch DoseXTrack.</p>
+            
+            <div class="blog-cards">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="/api/placeholder/400/300" alt="Blog Image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 12, 2025</div>
+                        <h3>DoseXTrack Prototype Enters Testing Phase</h3>
+                        <p>We're excited to announce that our first functional prototype is now being tested with select families.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="/api/placeholder/400/300" alt="Blog Image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 28, 2025</div>
+                        <h3>Partnership with Children's Hospital Announced</h3>
+                        <p>BioxBinary teams up with leading pediatric hospital to optimize DoseXTrack for clinical use.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="/api/placeholder/400/300" alt="Blog Image">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 15, 2025</div>
+                        <h3>The Technology Behind DoseXTrack</h3>
+                        <p>A deep dive into the IoT and embedded systems that power our smart medication dispenser.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="#" class="btn btn-outline">View All Updates</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Biox<span style="color: var(--secondary);">Binary</span></h3>
+                    <p>The signal for smarter care. Developing affordable, smart assistive devices for children with disabilities.</p>
+                    <div class="social-links">
+                        <a href="#"><i>in</i></a>
+                        <a href="#"><i>𝕏</i></a>
+                        <a href="#"><i>ig</i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#product">DoseXTrack</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#impact">Our Impact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Early Adopter Program</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated on our progress and latest innovations.</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your Email">
+                        <button>→</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 BioxBinary. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
